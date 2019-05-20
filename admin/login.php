@@ -1,5 +1,7 @@
 <?php
-require_once('../config.php'); // 由于require和include不能添加绝对路径 所以用相对路径或者物理路径
+require_once('../config.php'); // 由于require和include不能添加绝对路径 所以用相对路径或者 物理路径？
+// 物理路径写法 =>
+
 session_start();
 function login(){
   if (empty($_POST['email'])){
@@ -15,7 +17,8 @@ function login(){
 
   // 连接数据库
   $connet = mysqli_connect(ZXK_DB_HOST, ZXK_DB_USER, ZXK_DB_PASS, ZXK_DB_NAME);
-
+  // 我的格式编码不是中文的 需要更改
+  mysqli_set_charset($connet, 'utf8');
   if (!$connet) {
     $GLOBALS['erro_message'] = '请检查网络问题';
     return;
@@ -48,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   login();
 }
 
+// 退出功能
 if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] == 'logout') {
   unset($_SESSION['current_login_user']);
 }
@@ -83,5 +87,43 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['acti
       <button class="btn btn-primary btn-block">登 录</button>
     </form>
   </div>
+  <script src="/static/assets/vendors/jquery/jquery.min.js"></script>
+  <script>
+    // 在鼠标焦点离开时 实现输入账号请求头像功能
+    // TODO: 1 验证是不是一个邮箱
+    // TODO：2 发送ajax请求  =>
+    // 
+    
+    $(function($){
+      var reg = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([a-zA-Z0-9]{2,4})$/;
+
+
+      var oldValue = $('#email').val();
+      $('#email').on('blur', function (){
+        // 校验邮箱
+        var value = $('#email').val();
+        // alert(value);
+        // console.log(value);
+        // alert(oldValue);
+        if ( value == '' || !reg.test(value)) return;
+
+        if (oldValue == value) return;
+        oldValue = value;
+        // 发送ajax请求
+        $.get('/admin/api/avatar.php',{ email: value}, function(res){
+          if(!res) {
+            $('.avatar').attr('src', '/static/assets/img/default.png');
+               return;
+          }
+
+          $('.avatar').fadeOut(function (){
+            $(this).on('load', function(){
+              $(this).fadeIn();
+            }).attr('src', res);
+          })
+        })
+      })
+    })
+  </script>
 </body>
 </html>

@@ -1,13 +1,21 @@
 <?php
 
+include_once('../function.php'); // 注意是谁引入这个文件相对路径就从哪开始
 $path = $_SERVER['PHP_SELF'];
 $path = substr($path, 7);
+
+// 判断用户是否登录
+
+
+// 接受用户数据
+$user_name = xk_get_current_user();
+
 
  ?>
 <div class="aside">
     <div class="profile">
-      <img class="avatar" src="/static/uploads/avatar.jpg">
-      <h3 class="name">布头儿</h3>
+      <img class="avatar" src="<?php echo $user_name['avatar'] ?>">
+      <h3 class="name"><?php echo $user_name['nickname'] ?></h3>
     </div>
     <ul class="nav">
       <li <?php echo $path === 'index.php'? 'class="active"' : ''; ?>>

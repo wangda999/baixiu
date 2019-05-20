@@ -15,7 +15,7 @@
   <div class="main">
     
     <?php include_once('inc/navbar.php') ?>
-    
+
     <div class="container-fluid">
       <div class="jumbotron text-center">
         <h1>One Belt, One Road</h1>
@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-
+  
   <?php include_once('inc/aside.php') ?>
 
   <script src="/static/assets/vendors/jquery/jquery.js"></script>
