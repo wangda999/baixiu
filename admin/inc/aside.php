@@ -1,6 +1,6 @@
 <?php
 
-include_once('../function.php'); // 注意是谁引入这个文件相对路径就从哪开始
+require_once('../function.php'); // 注意是谁引入这个文件相对路径就从哪开始
 $path = $_SERVER['PHP_SELF'];
 $path = substr($path, 7);
 
