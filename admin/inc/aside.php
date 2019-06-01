@@ -1,17 +1,11 @@
 <?php
-
-require_once('../function.php'); // 注意是谁引入这个文件相对路径就从哪开始
+require_once('../config.php');
+require_once(ZXK_DIR_ROOT . '/function.php'); // 注意是谁引入这个文件相对路径就从哪开始
+// var_dump(ZXK_DIR_ROOT);
+$user_name = xk_get_current_user();
 $path = $_SERVER['PHP_SELF'];
 $path = substr($path, 7);
-
-// 判断用户是否登录
-
-
-// 接受用户数据
-$user_name = xk_get_current_user();
-
-
- ?>
+?>
 <div class="aside">
     <div class="profile">
       <img class="avatar" src="<?php echo $user_name['avatar'] ?>">

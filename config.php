@@ -20,3 +20,7 @@ define('ZXK_DB_PASS', '123456');
  * 数据库名字
  */
 define('ZXK_DB_NAME', 'baixiu');
+/**
+ * 网站根目录
+ */
+define('ZXK_DIR_ROOT', dirname(__FILE__));

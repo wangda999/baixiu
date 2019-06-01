@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN"> 
 <head>
   <meta charset="utf-8">
   <title>Users &laquo; Admin</title>
@@ -14,8 +14,7 @@
 
   <div class="main">
    
-    <?php include_once('inc/navbar.php') ?>
-
+    <?php include_once('inc/navbar.php'); ?>
     <div class="container-fluid">
       <div class="page-title">
         <h1>用户</h1>
@@ -111,7 +110,7 @@
     </div>
   </div>
 
-  <?php include_once('inc/aside.php') ?>
+  <?php include('inc/aside.php'); ?>
 
   <script src="/static/assets/vendors/jquery/jquery.js"></script>
   <script src="/static/assets/vendors/bootstrap/js/bootstrap.js"></script>
